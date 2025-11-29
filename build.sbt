@@ -1,0 +1,9 @@
+ThisBuild / version := "0.1.0-SNAPSHOT"
+
+ThisBuild / scalaVersion := "3.7.4"
+
+lazy val root = (project in file("."))
+  .settings(
+    name := "Advent-of-Code-2025",
+    idePackagePrefix := Some("io.github.avapl")
+  )
