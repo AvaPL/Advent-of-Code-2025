@@ -34,6 +34,7 @@ private def invalidIdsFor(evenLengthId: Id, maxEvenLengthId: Id) = {
     case (prefixString, postfixString) =>
       val prefix = prefixString.toLong
       val postfix = postfixString.toLong
+      // In ranges like 580816-616131 we want to start with 581 prefix, because 580580 is outside the range
       if (prefix >= postfix) prefix
       else prefix + 1
   }
