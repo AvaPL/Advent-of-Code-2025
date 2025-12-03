@@ -5,15 +5,15 @@ import scala.collection.mutable
 
 @main def puzzle2(): Unit = {
   val idRanges = PuzzleInputParser.parsedInput
-  val invalidIds = idRanges.flatMap(invalidIdsFor)
+  val invalidIds = idRanges.flatMap(invalidIdsForIdRange)
   val result = invalidIds.sum
   println(result)
 }
 
-private def invalidIdsFor(idRange: IdRange) = {
+private def invalidIdsForIdRange(idRange: IdRange) = {
   val startString = idRange.start.toString
   val endString = idRange.end.toString
-  val minIdLength = startString.length.max(2)
+  val minIdLength = math.max(2, startString.length)
   val maxIdLength = endString.length
   val maxPatternLength = endString.length / 2
 
