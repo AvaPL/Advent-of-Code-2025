@@ -1,8 +1,6 @@
 package io.github.avapl
 package day10.puzzle1
 
-import day10.Button
-
 import scala.collection.mutable
 
 @main def puzzle1(): Unit = {

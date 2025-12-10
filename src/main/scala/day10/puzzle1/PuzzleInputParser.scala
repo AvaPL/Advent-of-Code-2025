@@ -1,7 +1,6 @@
 package io.github.avapl
 package day10.puzzle1
 
-import day10.Button
 import util.InputParser
 import util.StringOps.*
 
