@@ -1,6 +1,7 @@
 package io.github.avapl
-package day10
+package day10.puzzle1
 
+import day10.Button
 import util.InputParser
 import util.StringOps.*
 
@@ -11,25 +12,17 @@ object PuzzleInputParser extends InputParser[List[Machine]](day = 10) {
 
   private def parseMachine(line: String) =
     line match {
-      case s"[$indicatorLightsStatesString] $buttonsString {$joltageRequirementsString}" =>
+      case s"[$indicatorLightsStatesString] $buttonsString {$_}" =>
         val indicatorLightStates = parseIndicatorLightsStates(indicatorLightsStatesString)
-        val joltageRequirements = parseJoltageRequirements(joltageRequirementsString)
-        val indicatorLights = indicatorLightStates.zip(joltageRequirements).map {
-          (indicatorLightState, joltageRequirement) => IndicatorLight(indicatorLightState, joltageRequirement)
-        }.toList
-        val machineState = MachineState(indicatorLights)
         val buttons = parseButtons(buttonsString)
-        Machine(machineState, buttons)
+        Machine(indicatorLightStates, buttons)
     }
 
   private def parseIndicatorLightsStates(string: String) =
     string.map {
       case '#' => IndicatorLightState.On
       case '.' => IndicatorLightState.Off
-    }
-
-  private def parseJoltageRequirements(string: String) =
-    string.map(_.asDigit)
+    }.toList
 
   private def parseButtons(string: String) =
     string.splitBy(" ").map {
